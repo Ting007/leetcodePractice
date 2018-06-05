@@ -16,39 +16,27 @@ class Solution:
 
         if n == 1:
             root = TreeNode(n)
-            return [[root.val]]
+            return [[root]]
 
-        trees = []
-        #generate tree recursively by calling subtree
-        nodeList = list(range(1, n+1))
-        print(nodeList)
-        self.generateSubTree(nodeList, n, trees)
-        # while root.val != []:
-        #     print(root, root.left, root.right)
+        trees = self.generateSubTree(1, n+1) #example n = 3, nodes [1,2,3], start 1, end 4
         return trees
 
 
-    def generateSubTree(self, nodeList, n, trees):
-        if nodeList == []:
-            return [None]
-        # print("root is " + str(root.val))
-        for i in range(1, n+1):
-            root = TreeNode(nodeList[n-1])
-            trees.append(root)
+    def generateSubTree(self, start, end):
+        
+        if start >= end:# n = 0
+            return None
 
+        tree = []
+        for i in range(start, end):# start=1, end = 4, i = 1,2,3
+            for left in self.generateSubTree(start, i) or [None]:
+                for right in self.generateSubTree(i+1, end) or [None]:
+                    root = TreeNode(i)
+                    root.left = left
+                    root.right = right
+                    tree.append(root)
 
-            leftList = list(range(1, i))
-            if leftList != []:
-                root.left=TreeNode(i-1)
-            self.generateSubTree(leftList, i-1, trees)
-
-            rightList = list(range(i, n))
-            print("right is ")
-            print(rightList)
-            if rightList != []:
-                root.right=TreeNode(rightList[-1])
-            self.generateSubTree(rightList, root.val-1, trees)
-        return trees
+        return tree
         
 
 def main():

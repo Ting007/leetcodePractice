@@ -1,0 +1,10 @@
+string: 
+859 Buddy String 7/10
+5 longest palindromic substring 7/11 brutal force, dynamic programming
+
+868 transpose Matrix python - list and zip
+849 Maximize Distance to Closest Person - Array
+855 Exam Room - Map
+856 score of Parentheses - string stack
+853 car fleet - stack
+105 construct binary tree from preorder and inorder traversal - Array Tree Depth-first search

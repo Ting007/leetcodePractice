@@ -4,30 +4,53 @@ class Solution:
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        result = []
-        if len(nums) < 3:
-        	return result
-        if len(nums) == 3 and sum(nums) == 0:
-        	return [nums]
-
         nums.sort()
-        setNums = list(set(nums))
-        for x in range(len(setNums)-2):
-        	if setNums[x] <= 0:
-        		j = len(nums)-1
-        		i = nums.index(setNums[x])+1
-        		while i < j:
-        			# print(nums[x], nums[i], nums[j])
-        			a = nums[i]+nums[j]+setNums[x]
-        			if a == 0:
-        				b = [setNums[x], nums[i], nums[j]]
-        				if result ==[] or result[-1] != b:
-	        				result.append(b)
-        			if a >= 0:
-        				j -= 1
-        			elif a <= 0:
-        				i += 1
+        solution = set()
+        for i in range(len(nums)-2):
+        	x = nums[i]
+        	if i == 0 or x != nums[i-1]:
+        		l = i+1
+        		r = len(nums)-1
+        		while l < r:
+        			if (x + nums[l] + nums[r]) == 0:
+        				solution.add((x, nums[l], nums[r]))
+        				l += 1
+        				r -= 1
+        			elif (x + nums[r] + nums[l]) > 0:
+        				r -= 1
+        			elif (x + nums[r] + nums[l]) < 0:
+        				l += 1
+        			else:
+        				break
+        result = []
+        for i in solution:
+        	result.append(list(i))
         return result
+
+        # result = []
+        # if len(nums) < 3:
+        # 	return result
+        # if len(nums) == 3 and sum(nums) == 0:
+        # 	return [nums]
+
+        # nums.sort()
+        # setNums = list(set(nums))
+        # for x in range(len(setNums)-2):
+        # 	if setNums[x] <= 0:
+        # 		j = len(nums)-1
+        # 		i = nums.index(setNums[x])+1
+        # 		while i < j:
+        # 			# print(nums[x], nums[i], nums[j])
+        # 			a = nums[i]+nums[j]+setNums[x]
+        # 			if a == 0:
+        # 				b = [setNums[x], nums[i], nums[j]]
+        # 				if result ==[] or result[-1] != b:
+	       #  				result.append(b)
+        # 			if a >= 0:
+        # 				j -= 1
+        # 			elif a <= 0:
+        # 				i += 1
+        # return result
 
 
 
@@ -69,8 +92,10 @@ def main():
 	40887,-89304,-12235,41488,1454,5355,-34855,-72080,24514,-58305,3340,34331,8731,77451,-64983,-57876,82874,62481,-32754,-39902,22451,-79095,-23904,78409,-7418,77916]
 	# s = [1,2,-2,-1]
 	# s = [0,0,0,0]
-	# s = [-2, 0, 0, 2, 2]
+	# # s = [-2, 0, 0, 2, 2]
 	# s = [-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]
+	# s = [0,-4,-1,-4,-2,-3,2]
+	# s = [-2, -1, 0, 1, 2, 3]
 	print(foo.threeSum(s))
 
 

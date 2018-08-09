@@ -5,22 +5,23 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        index={}
+        index=set()
         diff = 0
-        for i, num in enumerate(nums):
-        #	if num <= target:
-        	index[num]=i
         for i in range(len(nums)):
-        	diff = target - nums[i]
-        	if diff in index and index[i] != i:
-        		return [i, index[diff]]
+            diff = target - nums[i]
+            if diff in index:
+                return [i, nums.index(diff)]
+            index.add(nums[i])
+        return []
+
             
 
 def main():
         foo = Solution()
-        nums = [50, 24, 79, 50, 88, 345, 0]
+        allnums = [[50, 24, 79, 50, 88, 345, 0], [0,0], []]
         target = 100
-        print(foo.twoSum(nums, target))
+        for nums in allnums:
+            print(foo.twoSum(nums, target))
 
 if __name__ == "__main__":
         main()

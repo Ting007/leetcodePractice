@@ -8,3 +8,4 @@ string:
 856 score of Parentheses - string stack
 853 car fleet - stack
 105 construct binary tree from preorder and inorder traversal - Array Tree Depth-first search
+459Repeated substring pattern: return s in (s+s)[1:-1] //prefix and suffix between 0 and n-1

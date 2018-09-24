@@ -26,5 +26,6 @@ class Solution:
 
 if __name__ == '__main__':
 	foo = Solution()
+	s = [1,2,3,4]
 	x = foo.combinationSum([2,3,5,8], 8)
 	print(x)

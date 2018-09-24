@@ -6,25 +6,24 @@ class Solution:
         :rtype: List[List[int]]
         """
         res = []
-        if target == 0:
-        	return [[]]
-        if target in candidates:
-        	res.append([target])
-        for i in range(len(candidates)):
-        	temp = []
-        	if candidates[i] >= target:
-        		break
-        	else:
-        		target -= candidates[i]
-        		temp = self.combinationSum(candidates[1:], target)
-        		if temp:
-        			temp.append(candidates[i])
-
-        	res.append(temp)
+        candidates.sort()
+        self.dfs(candidates, target, res, [], 0)
         return res
+        
+    def dfs (self, candidates, target, res, path, index):
+        if target == 0:
+            res.append(path)
+        elif target < 0:
+            return
+        else:
+            for i in range(index, len(candidates)):
+                if candidates[i] <= target:
+                    self.dfs(candidates, target-candidates[i], res, path+[candidates[i]], i)
+
+
 
 
 if __name__ == '__main__':
 	foo = Solution()
-	x = foo.combinationSum([2,3,5,8], 8)
+	x = foo.combinationSum([2,3,5], 8)
 	print(x)

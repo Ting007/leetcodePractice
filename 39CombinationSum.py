@@ -26,6 +26,5 @@ class Solution:
 if __name__ == '__main__':
 	foo = Solution()
 	foo.combinationSum([2,3,5,8], 8)
-	s = 123
 	x = foo.combinationSum([2,3,5], 8)
 	print(x)

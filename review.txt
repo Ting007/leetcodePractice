@@ -1,5 +1,5 @@
 string: 
-859 Buddy String 7/10
+859 Buddy String 10/10
 5 longest palindromic substring 7/11 brutal force, dynamic programming
 
 868 transpose Matrix python - list and zip

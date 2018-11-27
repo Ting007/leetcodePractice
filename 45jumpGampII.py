@@ -1,3 +1,4 @@
+import cProfile
 class Solution(object):
     def jump(self, nums):
         """
@@ -35,5 +36,7 @@ if __name__ == '__main__':
     foo = Solution()
     sample = [[2,3,1,1,4], [7,0,9,6,9,6,1,7,9,0,1,2,9,0,3], [2,3,0,1,4], [1,2], [1,2,3], [1,1,1,1,1]]
     for s in sample:
-        x = foo.jump(s)
-        print(x)
+        cProfile.run("foo.jump(s)")
+        # print(x)
+
+
